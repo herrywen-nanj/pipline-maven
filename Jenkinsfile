@@ -25,14 +25,12 @@ pipeline {
                 }
             }
 	    steps {
-		sh '''# !/bin/bash
-		ENV_IMAGE = $(cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}')
-                echo $ENV_IMAGE
-		'''  
+		script {
+                        sh 'cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}' > update_image'
+                        env.UPDATE_IMAGE = readfile("update_image").trim()
+                }
+		sh 'echo ${UPDATE_IMAGE}'
 	    }
-	    steps {
-		sh 'echo ok'
-            }
         }
     }  
 }
