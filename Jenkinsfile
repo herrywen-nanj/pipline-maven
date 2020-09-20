@@ -26,7 +26,8 @@ pipeline {
             }
 	     	
 	    steps {
-		update_image = sh(script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}'", returnStdout: true).trim()
+		update_image = sh returnStdout: true ,script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}'"
+                update_image = update_image.trim()
             }        
 	    steps {
 		sh 'echo ${update_image}'
