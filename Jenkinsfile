@@ -30,6 +30,9 @@ pipeline {
                 echo $ENV_IMAGE
 		'''  
 	    }
+	    steps {
+		sh 'echo ok'
+            }
         }
     }  
 }
