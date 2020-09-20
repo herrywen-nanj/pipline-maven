@@ -16,14 +16,6 @@ pipeline {
             steps {
                 sh 'echo "test"'
             }
-        }
-        stage('Deploy') {
-            agent {
-                node {
-                    label 'master'
-                    customWorkspace '/opt/'
-                }
-            }
-        }     
+}
 }
 }
