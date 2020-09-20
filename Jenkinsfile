@@ -24,16 +24,13 @@ pipeline {
                     customWorkspace '/opt/'
                 }
             }
-	     	
-	    steps {
-		script {
-			sh "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}' > update_image"
-			env.UPDATE_IMAGE = readfile("update_image").trim()
-                }
+             
+            steps {
+		sh 'echo ok'
             }        
-	    steps {
-		sh 'echo ${update_image}'
+            steps {
+                sh 'echo ${update_image}'
             }
            }
-}
+    }
 }
