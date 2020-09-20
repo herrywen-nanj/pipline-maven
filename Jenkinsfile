@@ -26,7 +26,7 @@ pipeline {
             }
 	    steps {
 		script {
-			def ret = sh(script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}'", returnStdout: true)
+			def ret = sh(script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print \$NF}'", returnStdout: true)
                         println ret
                 }
 	    }
