@@ -25,13 +25,10 @@ pipeline {
                 }
             }
 	    steps {
-		script {
-			def ret = sh(script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print \$NF}'", returnStdout: true)
-                        println ret
-                }
+		GIT_COMMIT_EMAIL = sh (script: 'ls -l',returnStdout: true).trim()
 	    }
 	    steps {
-                sh 'echo ok'
+                sh 'echo ${GIT_COMMIT_EMAIL}'
             }
         }
     }  
