@@ -26,8 +26,8 @@ pipeline {
             }
 	    steps {
 		script {
-                        sh 'cat /opt/deployment_myweb.yaml | grep -w image | awk \'{print $NF}\' > update_image'
-                        env.UPDATE_IMAGE = readfile("update_image").trim()
+                        sh 'cat /opt/deployment_javademo.yaml | grep -w image | awk \'{print $NF}\' > update_image'
+                        env.UPDATE_IMAGE = readFile("update_image").trim()
                 }
 		sh 'echo ${UPDATE_IMAGE}'
 	    }
