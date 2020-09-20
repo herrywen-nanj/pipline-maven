@@ -30,6 +30,7 @@ pipeline {
                         env.UPDATE_IMAGE = readFile("update_image").trim()
                 }
 		sh 'echo ${UPDATE_IMAGE}'
+		sh 'echo ${GIT_COMMIT}'
 	    }
         }
     }  
