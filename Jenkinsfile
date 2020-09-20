@@ -13,12 +13,14 @@ pipeline {
         }
         stage('Replace deployment field') {
             steps {
-                update_image = sh(script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}'",returnStdout: true)
+		script {
+			sh "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}' > update_image-field"
+			env.update_image-field = readFile("update_image-field").trim()
             }
         }
         stage ('deploy to remote tomcat') {
             steps {
-		sh 'echo ${update_image}'
+		sh 'echo ${update_image-field}'
             }
         }
     }
