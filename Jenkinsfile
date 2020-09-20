@@ -26,12 +26,14 @@ pipeline {
             }
 	     	
 	    steps {
-		update_image = sh returnStdout: true ,script: "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}'"
-                update_image = update_image.trim()
+		script {
+			sh "cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}' > update_image"
+			env.UPDATE_IMAGE = readfile("update_image").trim()
+                }
             }        
 	    steps {
 		sh 'echo ${update_image}'
             }
-         }
-      }
+           }
+}
 }
