@@ -25,10 +25,13 @@ pipeline {
                 }
             }
 	    steps {
-		GIT_COMMIT_EMAIL = sh (script: 'ls -l',returnStdout: true).trim()
+		sh '''# !/bin/bash
+		ENV_IMAGE = $(cat /opt/deployment_myweb.yaml | grep -w image | awk '{print $NF}')
+                echo $ENV_IMAGE
+		'''  
 	    }
 	    steps {
-                sh 'echo ${GIT_COMMIT_EMAIL}'
+                sh 'echo ${ENV_IMAGE}'
             }
         }
     }  
