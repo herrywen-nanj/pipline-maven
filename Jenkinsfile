@@ -16,6 +16,7 @@ pipeline {
             steps {
                 sh 'echo "test"'
             }
+        }
 	stage('Deploy') {
 	    agent {
                 node {
@@ -24,9 +25,8 @@ pipeline {
                 }
             }
 	    steps {
-                sh 'ok'
+                sh 'echo ok'
             }
-}
-}
-}
+        }
+    }  
 }
