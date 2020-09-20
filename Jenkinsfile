@@ -24,13 +24,6 @@ pipeline {
                     customWorkspace '/opt/'
                 }
             }
-             
-            steps {
-		sh 'echo ok'
-            }        
-            steps {
-                sh 'echo ${update_image}'
-            }
-           }
-    }
+        }     
+}
 }
