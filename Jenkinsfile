@@ -12,8 +12,14 @@ pipeline {
     }                              
     stages {
         stage('build') {
+            agent {
+            docker {
+                image 'registry.cn-hangzhou.aliyuncs.com/houzigang/maven:3-alpine'
+                args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
-                sh '/usr/local/apache-maven-3.5.4/bin/mvn  -B -DskipTests clean package'
+                sh 'mvn  -B -DskipTests clean package'
             }
         }
         stage('Test') {
