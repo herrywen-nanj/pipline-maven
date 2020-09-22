@@ -23,7 +23,7 @@ pipeline {
         }
         stage('login docker registry') {
             steps {
-                retry(2) {sh 'docker login -u ${Docker_registry_USR} -p ${Docker_registry_PSW} registry.cn-hangzhou.aliyuncs.com }
+                retry(2) {sh 'docker login -u ${Docker_registry_USR} -p ${Docker_registry_PSW} registry.cn-hangzhou.aliyuncs.com'}
             }
         }
         stage('build image') {
