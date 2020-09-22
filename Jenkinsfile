@@ -16,6 +16,7 @@ pipeline {
             docker {
                 image 'registry.cn-hangzhou.aliyuncs.com/houzigang/maven:3-alpine'
                 args '-v /root/.m2:/root/.m2'
+		args '-w /ltzx'
                 }
             }
             steps {
