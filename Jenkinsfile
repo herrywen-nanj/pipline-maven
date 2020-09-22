@@ -49,7 +49,7 @@ pipeline {
         
     }
     post {
-	success { echo 'Congratulations!' sh """curl 'https://oapi.dingtalk.com/robot/send? access_token=${DINGTALK_CREDS_PSW}' \ -H 'Content-Type: application/json' \ -d '{"msgtype": "markdown", "markdown": { "title":"myblog", "text": "😄👍 构建成功 👍😄 \n**项目名称天宫云 \n**Git log**: ${GIT_LOG} \n**构建分支**: ${GIT_BRANCH} \n**构建地址**： ${RUN_DISPLAY_URL} \n**构建任务**：${BUILD_TASKS}" } }' """ }
+	success { echo 'Congratulations!' sh """curl 'https://oapi.dingtalk.com/robot/send? access_token=${DINGTALK_CREDS_PSW}' -H 'Content-Type: application/json'  -d '{"msgtype": "markdown", "markdown": { "title":"myblog", "text": "😄👍 构建成功 👍😄 \n**项目名称天宫云 \n**Git log**: ${GIT_LOG} \n**构建分支**: ${GIT_BRANCH} \n**构建地址**： ${RUN_DISPLAY_URL} \n**构建任务**：${BUILD_TASKS}" } }' """ }
         failure { 
             echo 'Oh no!' 
             sh  """
