@@ -62,7 +62,8 @@ pipeline {
 	    steps {
 		cleanWs()
 	    }
-    	}	
+    	}
+}	
     post {
 	success { 
             echo 'Congratulations!' 
