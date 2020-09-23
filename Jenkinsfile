@@ -2,7 +2,6 @@ pipeline {
     agent {
             node {
                 label 'master'
-                customWorkspace '/ltzx/'
             }
         }
     environment { 
@@ -35,6 +34,7 @@ pipeline {
         }
         stage('build image') {
             steps {
+		sh 'echo $PWD'
                 retry(2) {sh 'docker build -t ${IMAGE_REPO}:${GIT_COMMIT} .'}
             }
         }
