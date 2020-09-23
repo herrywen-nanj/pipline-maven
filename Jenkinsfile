@@ -2,7 +2,6 @@ pipeline {
     agent {
             node {
                 label 'master'
-		customWorkspace '\${WORKSPACE}'
             }
         }
     environment { 
@@ -28,6 +27,10 @@ pipeline {
                 sh 'echo "excute sonarqube"'
             }
         }
+	stage('move war file to build dir') {
+	    steps {
+		sh 'mv ${WORKSPACE}@2/target ${WORKSPACE}'
+	}
         stage('login docker registry') {
             steps {
                 retry(2) {sh 'docker login -u ${Docker_registry_USR} -p ${Docker_registry_PSW} registry.cn-hangzhou.aliyuncs.com'}
