@@ -18,6 +18,7 @@ pipeline {
                 }
             }
             steps {
+		sh 'echo $PWD'
                 sh 'mvn  -B -DskipTests clean package'
             }
         }
