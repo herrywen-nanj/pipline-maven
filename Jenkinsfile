@@ -58,8 +58,11 @@ pipeline {
                 timeout(time: 1, unit: 'MINUTES') { sh "kubectl apply -f deployment_${JOB_NAME}.yaml" }
             }
         }
-        
-    }
+        stage('Clean up workspace') {
+	    steps {
+		cleanWs()
+	    }
+    	}	
     post {
 	success { 
             echo 'Congratulations!' 
