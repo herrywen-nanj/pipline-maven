@@ -29,6 +29,6 @@ spec:
       #  value: "true"
       #  effect: "NoSchedule"
       containers:
-      - image:  registry.cn-hangzhou.aliyuncs.com/houzigang/jenkins_pre:javademo2
+      - image: {{IMAGE_URL}}
         imagePullPolicy: Always
         name: java-demo3
