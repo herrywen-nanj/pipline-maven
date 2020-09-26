@@ -70,13 +70,17 @@ pipeline {
 	success { 
             echo 'Congratulations!' 
             sh """
-                curl 'https://oapi.dingtalk.com/robot/send? access_token=${DINGTALK_CREDS_PSW}' -H 'Content-Type: application/json' -d '{"msgtype": "text","text": { "content": "😄👍构建成功👍😄\n 关键字：天宫云\n 项目名称: ${JOB_BASE_NAME}\n Commit Id: ${GIT_COMMIT}\n 构建地址：${RUN_DISPLAY_URL}" } }' 
+                curl 'https://oapi.dingtalk.com/robot/send?access_token=${DINGTALK_CREDS_PSW}' \
+				-H 'Content-Type: application/json' \
+				-d '{"msgtype": "text","text": {"content": "构建成功[35;1H\n 关键字：天宫云\n 项目名称: ${JOB_BASE_NAME}\n Commit Id: ${GIT_COMMIT}\n 构建地址：${RUN_DISPLAY_URL}"}}'
                 """ 
             }
         failure { 
             echo 'Oh no!' 
             sh  """
-                curl 'https://oapi.dingtalk.com/robot/send? access_token=${DINGTALK_CREDS_PSW}' -H 'Content-Type: application/json' -d '{"msgtype": "text", "text": {"content": "😖❌构建失败❌😖\n 关键字：天宫云\n 项目名称: ${JOB_BASE_NAME}\n Commit Id: ${GIT_COMMIT}\n 构建地址：${RUN_DISPLAY_URL}"} }' 
+                curl 'https://oapi.dingtalk.com/robot/send?access_token=${DINGTALK_CREDS_PSW}' \
+				-H 'Content-Type: application/json' \
+				-d '{"msgtype": "text","text": {"content": "😖❌构建失败❌😖\n 关键字：天宫云\n 项目名称: ${JOB_BASE_NAME}\n Commit Id: ${GIT_COMMIT}\n 构建地址：${RUN_DISPLAY_URL}"}}'
                 """ 
                 }
         always { 
