@@ -36,7 +36,7 @@ pipeline {
         }
 	stage('move war file to build dir') {
 	    steps {
-		sh 'mv ${WORKSPACE}@2/target ${WORKSPACE}'
+		sh 'mv ${WORKSPACE}@2/* ${WORKSPACE}'
 		}
 	}
         stage('login docker registry') {
