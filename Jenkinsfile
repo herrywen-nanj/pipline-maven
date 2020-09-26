@@ -5,7 +5,7 @@ pipeline {
             }
         }
     environment { 
-        IMAGE_REPO = 'registry.cn-hangzhou.aliyuncs.com/houzigang/jenkins_pre'
+        IMAGE_REPO = 'registry.cn-hangzhou.aliyuncs.com/houzigang/jenkins_pre/pipline'
         Docker_registry = credentials('AliYun_Registry')
         DINGTALK_CREDS = credentials('dingTalk')
     }                              
